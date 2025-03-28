@@ -25,6 +25,12 @@ class Card:
     def __repr__(self):
         return self.__str__() # repr is the same as str
 
+    def __eq__(self, other):
+        return self.rank == other.rank
+
+    def __lt__(self, other):
+        return self.RANKS.index(self.rank) < self.RANKS.index(other.rank)
+
 class Deck:
     def __init__(self):
         _cards = []
@@ -45,6 +51,8 @@ class Deck:
 
     def deal(self):
         return self.cards.pop(0)
+
+
 
 if __name__ == "__main__":
     c1 = Card("A", "♣")
