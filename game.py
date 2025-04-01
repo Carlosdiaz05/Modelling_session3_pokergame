@@ -2,7 +2,10 @@ from deck import Deck, Card
 
 
 class Hand:
+    """Represents a poker hand with 5 cards."""
+
     def __init__(self):
+        """Initializes a hand by dealing 5 cards from the deck."""
         hand = []
         for i in range(5):
             hand.append(deck.deal())
@@ -10,13 +13,16 @@ class Hand:
 
     @property
     def hand(self):
+        """Returns the list of cards in the hand."""
         return self._hand
 
     def __str__(self):
+        """Returns a string representation of the hand."""
         return str(self.hand)
 
     @property
     def is_flush(self):
+        """Checks if all cards in the hand have the same suit."""
         for card in self.hand:
             if card.suit != self.hand[0].suit:
                 return False
@@ -24,6 +30,7 @@ class Hand:
 
     @property
     def num_matches(self):
+        """Counts the number of matching ranks in the hand."""
         matches = 0
         for i in range(5):
             for j in range(5):
@@ -35,36 +42,32 @@ class Hand:
 
     @property
     def is_pair(self):
-        if self.num_matches == 2:
-            return True
-        return False
+        """Checks if the hand contains a pair."""
+        return self.num_matches == 2
 
     @property
     def is_2_pair(self):
-        if self.num_matches == 4:
-            return True
-        return False
+        """Checks if the hand contains two pairs."""
+        return self.num_matches == 4
 
     @property
     def is_trips(self):
-        if self.num_matches == 6:
-            return True
-        return False
+        """Checks if the hand contains three of a kind."""
+        return self.num_matches == 6
 
     @property
     def is_quads(self):
-        if self.num_matches == 12:
-            return True
-        return False
+        """Checks if the hand contains four of a kind."""
+        return self.num_matches == 12
 
     @property
     def is_full_house(self):
-        if self.num_matches == 8:
-            return True
-        return False
+        """Checks if the hand contains a full house (three of a kind and a pair)."""
+        return self.num_matches == 8
 
     @property
     def is_straight(self):
+        """Checks if the hand contains a straight (consecutive ranks)."""
         if self.num_matches != 0:
             return False
         self.hand.sort()
@@ -72,10 +75,6 @@ class Hand:
             return False
         return True
 
-# deck = Deck()
-# deck.shuffle()
-# h = Hand()
-# print(h)
 
 matches = 0
 count = 0
@@ -86,9 +85,7 @@ while matches < 1000:
     count += 1
     if h.is_flush:
         matches += 1
-        # break
-print(f"The probability of a flush is {100*matches/count}%")
-
+print(f"The probability of a flush is {100 * matches / count}%")
 
 matches = 0
 count = 0
@@ -99,9 +96,7 @@ while matches < 1000:
     count += 1
     if h.is_pair:
         matches += 1
-        # break
-print(f"The probability of a pair is {100*matches/count}%")
-
+print(f"The probability of a pair is {100 * matches / count}%")
 
 matches = 0
 count = 0
@@ -112,9 +107,7 @@ while matches < 1000:
     count += 1
     if h.is_2_pair:
         matches += 1
-        # break
-print(f"The probability of 2 pairs is {100*matches/count}%")
-
+print(f"The probability of 2 pairs is {100 * matches / count}%")
 
 matches = 0
 count = 0
@@ -125,9 +118,7 @@ while matches < 1000:
     count += 1
     if h.is_trips:
         matches += 1
-        # break
-print(f"The probability of trips is {100*matches/count}%")
-
+print(f"The probability of trips is {100 * matches / count}%")
 
 matches = 0
 count = 0
@@ -138,9 +129,7 @@ while matches < 1000:
     count += 1
     if h.is_quads:
         matches += 1
-        # break
-print(f"The probability of quads is {100*matches/count}%")
-
+print(f"The probability of quads is {100 * matches / count}%")
 
 matches = 0
 count = 0
@@ -151,8 +140,7 @@ while matches < 100:
     count += 1
     if h.is_full_house:
         matches += 1
-        # break
-print(f"The probability of full house is {100*matches/count}%")
+print(f"The probability of full house is {100 * matches / count}%")
 
 matches = 0
 count = 0
@@ -163,6 +151,4 @@ while matches < 100:
     count += 1
     if h.is_straight:
         matches += 1
-        # break
-print(f"The probability of straight is {100*matches/count}%")
-
+print(f"The probability of straight is {100 * matches / count}%")

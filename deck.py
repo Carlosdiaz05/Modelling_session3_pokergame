@@ -1,38 +1,53 @@
 import random
+
+
 class Card:
+    """Represents a playing card with a rank and suit."""
+
     RANKS = ["2", "3", "4", "5", "6", "7", "8", "9", "10", "J", "Q", "K", "A"]
     SUITS = ["♣", "♦", "♥", "♠"]
-    # SUITS = ["clubs", "diamonds", "hearts", "spades"]
+
     def __init__(self, rank, suit):
+        """Initializes a card with a given rank and suit."""
         if rank not in self.RANKS:
-            raise ValueError("invalid rank")
+            raise ValueError("Invalid rank")
         if suit not in self.SUITS:
-            raise ValueError("invalid suit")
+            raise ValueError("Invalid suit")
         self._rank = rank
         self._suit = suit
 
     @property
     def rank(self):
+        """Returns the rank of the card."""
         return self._rank
 
     @property
     def suit(self):
+        """Returns the suit of the card."""
         return self._suit
 
     def __str__(self):
+        """Returns a string representation of the card."""
         return f"{self._rank}{self._suit}"
 
     def __repr__(self):
-        return self.__str__() # repr is the same as str
+        """Returns a string representation of the card for debugging."""
+        return self.__str__()
 
     def __eq__(self, other):
+        """Checks if two cards have the same rank."""
         return self.rank == other.rank
 
     def __lt__(self, other):
+        """Compares two cards based on rank ordering."""
         return self.RANKS.index(self.rank) < self.RANKS.index(other.rank)
 
+
 class Deck:
+    """Represents a deck of 52 playing cards."""
+
     def __init__(self):
+        """Initializes a deck with 52 standard playing cards."""
         _cards = []
         for suit in Card.SUITS:
             for rank in Card.RANKS:
@@ -41,17 +56,20 @@ class Deck:
 
     @property
     def cards(self):
+        """Returns the list of cards in the deck."""
         return self._cards
 
     def __str__(self):
+        """Returns a string representation of the deck."""
         return str(self._cards)
 
     def shuffle(self):
+        """Shuffles the deck randomly."""
         random.shuffle(self.cards)
 
     def deal(self):
+        """Removes and returns the top card from the deck."""
         return self.cards.pop(0)
-
 
 
 if __name__ == "__main__":
