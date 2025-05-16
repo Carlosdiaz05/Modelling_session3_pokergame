@@ -2,10 +2,10 @@ from deck import Deck, Card
 
 
 class Hand:
-    """Represents a poker hand with 5 cards."""
+    """Poker hand with 5 cards."""
 
     def __init__(self):
-        """Initializes a hand by dealing 5 cards from the deck."""
+        """Initializes a hand by dealing 5 cards"""
         hand = []
         for i in range(5):
             hand.append(deck.deal())
@@ -17,7 +17,7 @@ class Hand:
         return self._hand
 
     def __str__(self):
-        """Returns a string representation of the hand."""
+        """Returns string representation of the hand."""
         return str(self.hand)
 
     @property
@@ -62,12 +62,12 @@ class Hand:
 
     @property
     def is_full_house(self):
-        """Checks if the hand contains a full house (three of a kind and a pair)."""
+        """Checks if the hand contains a full house """
         return self.num_matches == 8
 
     @property
     def is_straight(self):
-        """Checks if the hand contains a straight (consecutive ranks)."""
+        """Checks if the hand contains a straight"""
         if self.num_matches != 0:
             return False
         self.hand.sort()
