@@ -2,7 +2,7 @@ import random
 
 
 class Card:
-    """Represents a playing card with a rank and suit."""
+    """Represents a playing card with rank and suit."""
 
     RANKS = ["2", "3", "4", "5", "6", "7", "8", "9", "10", "J", "Q", "K", "A"]
     SUITS = ["♣", "♦", "♥", "♠"]
@@ -18,7 +18,7 @@ class Card:
 
     @property
     def rank(self):
-        """Returns the rank of the card."""
+        """Returns rank of the card."""
         return self._rank
 
     @property
@@ -31,11 +31,11 @@ class Card:
         return f"{self._rank}{self._suit}"
 
     def __repr__(self):
-        """Returns a string representation of the card for debugging."""
+        """Returns a string representation of the card"""
         return self.__str__()
 
     def __eq__(self, other):
-        """Checks if two cards have the same rank."""
+        """Checks if two cards have same rank."""
         return self.rank == other.rank
 
     def __lt__(self, other):
@@ -47,7 +47,7 @@ class Deck:
     """Represents a deck of 52 playing cards."""
 
     def __init__(self):
-        """Initializes a deck with 52 standard playing cards."""
+        """Initializes a deck"""
         _cards = []
         for suit in Card.SUITS:
             for rank in Card.RANKS:
@@ -56,7 +56,7 @@ class Deck:
 
     @property
     def cards(self):
-        """Returns the list of cards in the deck."""
+        """Returns the list of cards"""
         return self._cards
 
     def __str__(self):
@@ -64,7 +64,7 @@ class Deck:
         return str(self._cards)
 
     def shuffle(self):
-        """Shuffles the deck randomly."""
+        """Shuffles the deck ."""
         random.shuffle(self.cards)
 
     def deal(self):
